@@ -54,6 +54,7 @@ int main()
 
     // The vector containing the words that matches the length.
     vector<string>& remainingWords = dict[len];
+
     // The current "word-family" is the family containing all defined words of given length;
     string family(len, UNREVIELED);
 
