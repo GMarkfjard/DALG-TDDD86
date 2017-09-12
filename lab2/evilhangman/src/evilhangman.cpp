@@ -7,14 +7,11 @@
 using namespace std;
 
 const string ALPHABET  = "abcdefghijklmnopqrstuvwxyz";
-const string path = "/Users/bjorneman/Desktop/TDDD86/labb2/evilhangman/res/di.txt";
+const string path = "di.txt";
 const char UNREVIELED = '_';
 
 string getLargestGroupKey(map<string, vector<string>> m);
 string getFamily(string w, string curFam, char guess);
-
-template <typename T>
-T askUser(string message);
 
 int main()
 {
@@ -31,17 +28,21 @@ int main()
 
     int len = 0;
     while (len == 0 || dict.count(len) < 1){
-        len = askUser<int>("Wordlength: ");
+        cout << "Wordlength: ";
+        cin >> len;
     }
 
     int guesses = 0;
     while (guesses < 1){
-        guesses = askUser<int>("Guess amount: ");
+        cout << "Guess amount: ";
+        cin >> guesses;
     }
 
     bool see_remaining;
     while(true) {
-        char ans = askUser<char>("Do you want to see the amount of remaining words?[y/n]: ");
+        char ans;
+        cout << "Do you want to see the amount of remaining words?[y/n]: ";
+        cin >> ans;
         if (ans == 'y') {
             see_remaining = true;
             break;
@@ -65,7 +66,9 @@ int main()
         if (see_remaining)
             cout << "remaining words: " << remainingWords.size() << endl;
 
-        char guess = askUser<char>("Guess: ");
+        char guess;
+        cout << "Guess: ";
+        cin >> guess;
 
         // Place all remaining words into "word-families" based on the current guesses.
         map<string, vector<string>> families;
@@ -118,13 +121,5 @@ string getFamily(string w, string curFam, char guess) {
 
     return res;
 
-}
-
-template <typename T>
-T askUser(string msg) {
-    T ans;
-    cout << msg;
-    cin >> ans;
-    return ans;
 }
 
