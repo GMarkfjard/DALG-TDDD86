@@ -10,10 +10,11 @@ const string ALPHABET  = "abcdefghijklmnopqrstuvwxyz";
 const string path = "/Users/bjorneman/Desktop/TDDD86/labb2/evilhangman/res/di.txt";
 const char UNREVIELED = '_';
 
-string getLargestGroupKey(map<a, vector<B> m);
+string getLargestGroupKey(map<string, vector<string>> m);
 string getFamily(string w, string curFam, char guess);
+
 template <typename T>
-T askUser(String message);
+T askUser(string message);
 
 int main()
 {
@@ -30,17 +31,17 @@ int main()
 
     int len = 0;
     while (len == 0 || dict.count(len) < 1){
-        len = askUser("Wordlength: ");
+        len = askUser<int>("Wordlength: ");
     }
 
     int guesses = 0;
     while (guesses < 1){
-        guesses = askUser("Guess amount: ");
+        guesses = askUser<int>("Guess amount: ");
     }
 
     bool see_remaining;
     while(true) {
-        char ans = askUser("Do you want to see the amount of remaining words?[y/n]: ");
+        char ans = askUser<char>("Do you want to see the amount of remaining words?[y/n]: ");
         if (ans == 'y') {
             see_remaining = true;
             break;
@@ -63,7 +64,7 @@ int main()
         if (see_remaining)
             cout << "remaining words: " << remainingWords.size() << endl;
 
-        char guess = askUser("Guess: ");
+        char guess = askUser<char>("Guess: ");
 
         // Place all remaining words into "word-families" based on the current guesses.
         map<string, vector<string>> families;
@@ -93,11 +94,9 @@ int main()
     return 0;
 }
 
-template<typename A>
-template<typename B>
-string getLargestGroupKey(map<a, vector<B> m) {
+string getLargestGroupKey(map<string, vector<string>> m) {
     int largest_group_size = 0;
-    A key;
+    string key;
     for (auto& group : m) {
         if (group.second.size() > largest_group_size) {
             key = group.first;
