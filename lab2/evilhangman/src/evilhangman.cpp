@@ -13,6 +13,10 @@ const char UNREVIELED = '_';
 string getLargestGroupKey(map<string, vector<string>> m);
 string getFamily(string w, string curFam, char guess);
 
+/**
+ * @brief main An implementation of the game hangman.
+ * @return whether the program executed without errors.
+ */
 int main()
 {
     cout << "Welcome to Hangman." << endl;
@@ -111,6 +115,14 @@ string getLargestGroupKey(map<string, vector<string>> m) {
     return key;
 }
 
+/**
+ * @brief getFamily returns the word family for a word based on a given character,
+ * for example ada has the word-family "a_a" for the character 'a'.
+ * @param w the word for which to get the family
+ * @param curFam the current created word-family that the word is placed in
+ * @param guess the guess to base the new word-family on.
+ * @return the resulting word-family for the word.
+ */
 string getFamily(string w, string curFam, char guess) {
     string res = w;
     for (int i = 0; i < res.size(); i++) {
