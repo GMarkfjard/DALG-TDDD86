@@ -70,6 +70,11 @@ int main()
         if (see_remaining)
             cout << "remaining words: " << remainingWords.size() << endl;
 
+        for(auto& w : remainingWords){
+            cout << w + " ";
+        }
+        cout << endl;
+
         char guess;
         cout << "Guess: ";
         cin >> guess;
@@ -83,7 +88,12 @@ int main()
 
         string prev_fam = family;
         // Find the largest "word-family" and store its words.
-        family = getLargestGroupKey(families);
+        // Implementation of E1: The family will be set to the previous family,
+        // i.e no character will be revealed if the amount of remaining guesses is 0
+        // And the previous family still contains some words.
+        if(guesses > 1 || families[prev_fam].size() == 0){
+            family = getLargestGroupKey(families);
+        }
         remainingWords = families[family];
 
         // If the word is finished, the player has won.
@@ -95,6 +105,14 @@ int main()
         // If the family did not change, the user has given a wrong guess.
         if (family == prev_fam) {
             guesses -= 1;
+        }
+
+        if(guesses == 0){
+            cout << "Wow you lost" << endl;
+            for(auto& w : remainingWords){
+                cout << w + " " << endl;
+            }
+            break;
         }
 
     }
