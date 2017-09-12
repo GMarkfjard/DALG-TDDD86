@@ -105,8 +105,8 @@ int main()
 
 /**
  * @brief getLargestGroupKey Gets the largest groupkey i.e family
- * @param m
- * @return
+ * @param m The map of the current families
+ * @return The largest family. E.g "--G-"
  */
 string getLargestGroupKey(const map<string, vector<string>>& m) {
     int largest_group_size = 0;
