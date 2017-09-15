@@ -6,6 +6,7 @@
 
 #ifndef TILELIST_H
 #define TILELIST_H
+typedef unsigned int uint;
 
 #include <QGraphicsScene>
 #include "Tile.h"
@@ -23,7 +24,10 @@ public:
     void removeAll(int x, int y);
 
 private:
-
+    int findBackwards(int x, int y);
+    void remove(int i);
+    Tile* tiles;
+    uint size, maxSize;
 };
 
 #endif // TILELIST_H
