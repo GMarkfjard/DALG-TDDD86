@@ -35,6 +35,19 @@ int main(int argc, char *argv[]) {
     view->scale(1, -1); //screen y-axis is inverted
     view->setSceneRect(0, 0, width, height);
     view->show();
+    /*Point p1(100, 100);
+    Point p2(500, 100);
+    Point p3(500, 500);
+    Point p4(100, 500);
+
+    Tour squareTour(p1,p2,p3,p4);
+    squareTour.show();
+    cout << squareTour.size() << endl;
+    cout << squareTour.distance() << endl;
+    squareTour.draw(scene);
+    */
+
+
 
     // run insertion heuristic
     Tour tour;
@@ -49,6 +62,7 @@ int main(int argc, char *argv[]) {
         //std::this_thread::sleep_for(dura);
         //a.processEvents();
     }
+    cout << width << endl;
     input.close();
 
     // print tour to standard output
@@ -59,5 +73,8 @@ int main(int argc, char *argv[]) {
 
     // draw tour
     tour.draw(scene);
+
+
+
     return a.exec(); // start Qt event loop
 }
