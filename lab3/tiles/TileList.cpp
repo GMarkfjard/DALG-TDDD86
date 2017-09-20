@@ -36,14 +36,14 @@ void TileList::addTile(Tile tile)
 
 }
 
-void TileList::drawAll(QGraphicsScene* scene)
+void TileList::drawAll(QGraphicsScene* scene) const
 {
     for(uint i = 0; i< size; i++){
         tiles[i].draw(scene);
     }
 }
 
-int TileList::indexOfTopTile(int x, int y)
+int TileList::indexOfTopTile(int x, int y) const
 {
     for(int i = size-1; i >= 0; i--){
         if(tiles[i].contains(x, y)){
@@ -94,7 +94,8 @@ void TileList::removeAll(int x, int y)
     }
 }
 
-int TileList::findBackwards(int x, int y) {
+int TileList::findBackwards(int x, int y) const
+{
     for(int i = size-1; i >= 0; i--){
         if(tiles[i].contains(x, y)){
             return i;
@@ -103,7 +104,8 @@ int TileList::findBackwards(int x, int y) {
     return -1;
 }
 
-void TileList::remove(int i){
+void TileList::remove(int i)
+{
     if (i >= 0 && (uint) i < size) {
         for (uint n = i; n < size - 1; n++){
             tiles[n] = tiles[n+1];

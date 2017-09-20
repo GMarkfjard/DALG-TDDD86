@@ -16,15 +16,15 @@ public:
     TileList();
     ~TileList();
     void addTile(Tile tile);
-    void drawAll(QGraphicsScene* scene);
-    int indexOfTopTile(int x, int y);
+    void drawAll(QGraphicsScene* scene) const;
+    int indexOfTopTile(int x, int y) const;
     void lower(int x, int y);
     void raise(int x, int y);
     void remove(int x, int y);
     void removeAll(int x, int y);
 
 private:
-    int findBackwards(int x, int y);
+    int findBackwards(int x, int y) const;
     void remove(int i);
     Tile* tiles;
     uint size, maxSize;
